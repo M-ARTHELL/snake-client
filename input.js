@@ -1,3 +1,4 @@
+const {MOVEMENT, MESSAGES} = require('./constants')
 let connection;
 
 // setup interface to handle user input from stdin
@@ -20,41 +21,14 @@ const handleUserInput = function (key) {
     process.stdout.write('Disconnecting... \n');
     process.exit();
   }
-  // w - up
-  if (key === 'w') {
-    connection.write('Move: up');
+  // movement
+  if (key === 'w' || key === 'a' || key === 's' || key === 'd') {
+    connection.write(MOVEMENT[key]);
   }
 
-  // a - left
-  if (key === 'a') {
-    connection.write('Move: left');
-  }
-
-  // s - down
-  if (key === 's') {
-    connection.write('Move: down');
-  }
-
-  // d - right
-  if (key === 'd') {
-    connection.write('Move: right');
-  }
-
-
-  //messages
-  // h - hi
-  if (key === 'h') {
-    connection.write('Say: hi');
-  }
-
-    // b - brb
-  if (key === 'b') {
-    connection.write('Say: brb');
-  }
-
-  // g - bye
-  if (key === 'g') {
-    connection.write('Say: bye');
+  // messages
+  if (key === '1' || key === '2' || key === '3') {
+    connection.write(MESSAGES[key]);
   }
 };
 
