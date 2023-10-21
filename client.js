@@ -12,12 +12,11 @@ const connect = function () {
   // on connection to the server: displays success message and instructions, then sets player name
   conn.on('connect', (connected) => {
     console.log('Successfully connected to the game server.')
-    
     console.log(HELP)   // displays instructions
     conn.write(NAME);   // sets player name
   });
 
-  //interpret incoming data as text
+  // interpret incoming data as text
   conn.setEncoding("utf8");
 
   // listening
