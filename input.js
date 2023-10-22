@@ -1,9 +1,9 @@
-const {MOVEMENT, MESSAGES, HELP} = require('./constants')
+const {MOVEMENT, MESSAGES, HELP} = require('./constants');
 
 let connection;
 
 // setup interface to handle user input from stdin
-const setupInput = function (conn) {
+const setupInput = function(conn) {
   const stdin = process.stdin;
   connection = conn;
 
@@ -16,7 +16,7 @@ const setupInput = function (conn) {
 };
 
 
-const handleUserInput = function (key) {
+const handleUserInput = function(key) {
 
   // exit game (ctrl+c)
   if (key === '\u0003') {
@@ -26,7 +26,7 @@ const handleUserInput = function (key) {
   // movement (w: up, a: right, s: down, d: right)
   // uses slice for bug fix: ensures that only one input is going through when key is being held down
   } else if (key.includes('w') || key.includes('a') || key.includes('s') || key.includes('d')) {
-    key = key.slice(0,1)
+    key = key.slice(0,1);
     connection.write(MOVEMENT[key]);
 
   // messages (1: hello, 2: gg, 3: bye)
